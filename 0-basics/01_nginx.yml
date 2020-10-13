@@ -1,0 +1,44 @@
+# Version for our kubernetes.
+# Better naming can be achieved using app/v1, app/deployment/v1, app/v1/testing,
+# depending upon the requirement
+apiVersion: v1
+
+# Type of kubernetes object like pod, service, replica set, etc. 
+kind: Pod
+
+# Details for the object.
+# Can use any key value for label.
+# But we cannot add anything under metadata.
+# We can only add keys that Kubernetes expects
+
+metadata:
+  name: myapp-test
+  labels:
+    app: myapp
+    type: frontend
+    stage: testing
+
+#Specifications and main configuration for the objects
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
+
+
+
+# Create the pod with command
+# kubectl create -f 0-basics/01_nginx.yml
+
+# To view the pods
+# kubectl get pods
+
+# To get more result of pods
+# kubectl get pods -o wide
+
+# To get detailed infromation on pods
+# kubectl describe pod myapp-test
+# myapp-test is the name we defined earlier in metadata
+
+# To cleanup the work
+# kubectl delete pod myapp-test
+# You can verify the deletion of pod using kubectl get pods
