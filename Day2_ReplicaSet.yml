@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myapp
+  labels:
+    app: replica-set-app
+    type: frontend
+    stage: testing
+spec:
+  template:
+    metadata:
+      name: myapp-test
+      labels:
+        app: myapp
+        type: frontend
+        stage: testing
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
+  replicas: 2
+  # Selector defines which pods to look or monitor for Replica Set. 
+  # I have used type:frontend label used in label above.
+  # If the label specified in matchLabels is not found in label, it gives error.
+  # So, I cannot use type:front-end
+  selector:
+    matchLabels:
+#     type: front-end   ##Cannot use this
+      type: frontend

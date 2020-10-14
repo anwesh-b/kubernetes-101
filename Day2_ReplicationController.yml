@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: myapp
+  labels:
+    app: day2app
+    type: frontend
+    stage: development
+spec:
+  # Template contains the metadata and spec of the pods that need to be in the replication controller
+  template:
+    metadata:
+      name: myapp-test
+      labels:
+        app: myapp
+        type: frontend
+        stage: testing
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
+  # Replica contains number of pods that needs to be in Replication Controller 
+  replicas: 2
