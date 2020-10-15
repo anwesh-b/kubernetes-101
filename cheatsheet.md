@@ -2,6 +2,9 @@
 Create kubernetes object<br>
 `kubectl create -f <file_name>`
 
+## List of all objects
+`kubectl get all`
+
 ## Pods
 #### Get list of pods
 `kubectl get pods`
@@ -39,3 +42,15 @@ Eg. `kubectl scale --replicas=5 -f <file_name>`
 #### Scaling using resource name
 `kubectl scale --replicas=<no_of_new_replicas> <resource_type> <resource_name>`<br>
 Eg. `kubectl scale --replicas=5 replicaset <resource_name>`
+
+# Deployemnt
+#### Get list of deployments
+`kubectl get deployments`
+#### Get description of deployment
+`kubectl describe deployments`
+#### Delete a deployment
+`kubectl delete deployment <deployment_name>`
+#### Update a deployment
+`kubectl apply -f <file_name>`
+#### Rollout an update to previous version
+`kubectl rollout undo deployment <deployment_name>`

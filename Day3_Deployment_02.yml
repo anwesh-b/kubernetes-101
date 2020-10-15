@@ -1,0 +1,46 @@
+# Create a deployment and update the image
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+  labels:
+    app: my-deployment-app
+    type: frontend
+    stage: deployment
+spec:
+  template:
+    metadata:
+      name: my-deployment-app
+      labels:
+        type: frontend
+        stage: deployment
+    spec:
+      containers:
+        - name: nginx
+#         image: nginx:1.19.3    Use this image at the starting and change it to image:nginx and update
+#         After creation use the command below to update to new version of image
+#         kubectl apply -f <file_name>
+          image: nginx
+  replicas: 4
+  selector:
+    matchLabels:
+      type: frontend
+      stage: deployment
+
+# This uses default deployment strategy
+# Check the description of deployment to see how the pods are being updated
+# Check the replica set, which is also changed after the update
+
+
+# Description of update of deployment is given below and we can see how two replica set are being scaled up and down simultaneously
+
+# Normal  ScalingReplicaSet  3m58s  deployment-controller  Scaled up replica set app-deployment-76b8dbc778 to 4
+# Normal  ScalingReplicaSet  116s   deployment-controller  Scaled up replica set app-deployment-66bf747568 to 1
+# Normal  ScalingReplicaSet  116s   deployment-controller  Scaled down replica set app-deployment-76b8dbc778 to 3
+# Normal  ScalingReplicaSet  116s   deployment-controller  Scaled up replica set app-deployment-66bf747568 to 2
+# Normal  ScalingReplicaSet  110s   deployment-controller  Scaled down replica set app-deployment-76b8dbc778 to 2
+# Normal  ScalingReplicaSet  110s   deployment-controller  Scaled up replica set app-deployment-66bf747568 to 3
+# Normal  ScalingReplicaSet  108s   deployment-controller  Scaled down replica set app-deployment-76b8dbc778 to 1
+# Normal  ScalingReplicaSet  108s   deployment-controller  Scaled up replica set app-deployment-66bf747568 to 4
+# Normal  ScalingReplicaSet  103s   deployment-controller  Scaled down replica set app-deployment-76b8dbc778 to 0

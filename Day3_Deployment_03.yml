@@ -1,0 +1,36 @@
+# Deployment usnig Recreate strategy
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+  labels:
+    app: app-deploy-recreate
+    type: frontend
+    stage: deployment
+spec:
+  template:
+    metadata: 
+      name: deploy-recreate
+      labels:
+        app: app-deployment
+        type: frontend
+        stage: deployment
+    spec:
+      containers:
+        - name: nginx
+#          image: nginx:1.19.3
+          image: nginx
+  replicas: 4
+  selector:
+    matchLabels:
+      type: frontend
+      stage: deployment
+  strategy:
+    type: Recreate
+
+# Description of update of deployment is given below and we can see how replica set is being scaled down to 0 and only scaled up
+
+#  Normal  ScalingReplicaSet  2m6s  deployment-controller  Scaled up replica set app-deployment-54b4f6b4b9 to 4  
+#   Normal  ScalingReplicaSet  63s   deployment-controller  Scaled down replica set app-deployment-54b4f6b4b9 to 0
+#   Normal  ScalingReplicaSet  49s   deployment-controller  Scaled up replica set app-deployment-5c4d94666f to 4
