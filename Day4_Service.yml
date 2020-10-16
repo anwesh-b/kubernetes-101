@@ -1,0 +1,21 @@
+# Creating a kubernetes service
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-service
+spec:
+# Type can be NodePort, Cluster IP or Load Balancer
+  type: NodePort
+  ports:
+#     Target port is the port of the Pod
+#     If target port is not given, it is set same as "port" of service
+    - targetPort: 80
+#     Port means the port on the service
+      port: 80
+#     Nodeport is the port of node where kubernetes is running. Ranges between 30000 - 32767
+      nodePort: 30008
+  selector:
+#   Use selector from previously deployed pods. I have used from Day1_nginx.yml
+    app: myapp
+    type: frontend

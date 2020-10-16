@@ -31,6 +31,6 @@ spec:
 
 # Description of update of deployment is given below and we can see how replica set is being scaled down to 0 and only scaled up
 
-#  Normal  ScalingReplicaSet  2m6s  deployment-controller  Scaled up replica set app-deployment-54b4f6b4b9 to 4  
+#   Normal  ScalingReplicaSet  2m6s  deployment-controller  Scaled up replica set app-deployment-54b4f6b4b9 to 4  
 #   Normal  ScalingReplicaSet  63s   deployment-controller  Scaled down replica set app-deployment-54b4f6b4b9 to 0
 #   Normal  ScalingReplicaSet  49s   deployment-controller  Scaled up replica set app-deployment-5c4d94666f to 4
