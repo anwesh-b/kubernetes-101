@@ -15,6 +15,7 @@ spec:
       port: 80
 #     Nodeport is the port of node where kubernetes is running. Ranges between 30000 - 32767
       nodePort: 30008
+      name: test
   selector:
 #   Use selector from previously deployed pods. I have used from Day1_nginx.yml
     app: myapp
