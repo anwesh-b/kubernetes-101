@@ -1,0 +1,1 @@
+# Things that will slow the learning process
