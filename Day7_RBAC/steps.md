@@ -25,9 +25,13 @@ kubectl config set-context user1-context --cluster=minikube --namespace=default 
 
 ## Role and Role binding
 Create role
-kubectl apply -f role.yml
+<br>
+`kubectl apply -f role.yml`
+<br>
 Create role binding
-kubectl apply -f role-binding.yml
+<br>
+`kubectl apply -f role-binding.yml`
+<br>
 To check them
 `kubectl get roles`
 `kubectl get rolebindings`
@@ -36,6 +40,5 @@ To check them
 `kubectl config use-context user1-context`
 ###### To see current context
 `kubectl config current-context`
+<br>
 Now try viewing and creating pods. We can see everything about the pods but we cannot create one.
-
-###### 
