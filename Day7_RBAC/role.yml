@@ -1,0 +1,8 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: pod-reader
+rules:
+  - apiGroups: [""]
+    resources: ["pods"] # Can be any kind of resource
+    verbs: ["get","watch","list"] # Read only access. Can be set anything as per need
