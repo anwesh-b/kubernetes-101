@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-test
+  namespace: test
+spec:
+  rules:
+    - host: nginx.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: app-deployment
+                port:
+                  number: 80
+    - host: apache.example.com
+      http:
+        paths:
+            - path: /
+              pathType: Prefix # Exact, prefix or mixed. Link: https://kubernetes.io/docs/concepts/services-networking/ingress/#path-types
+              backend:
+                service:
+                  name: app-deployment-apache
+                  port:
+                    number: 80
