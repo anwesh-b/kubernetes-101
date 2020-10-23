@@ -6,7 +6,7 @@ metadata:
     app: volume-pod
 spec:
   volumes:
-    - name: host-volume
+    - name: host-volume # Using this name, volume will be consumed by Containers
       hostPath:
         path: /home/docker/volume
 #       Current host is minikube VM, so dont use your host directory but use minikube's directory
@@ -17,7 +17,7 @@ spec:
         - containerPort: 80
       volumeMounts:
         - mountPath: /usr/share/nginx/html
-          name: host-volume
+          name: host-volume #Name of the volume
     - name: debian
       image: debian
       volumeMounts:
