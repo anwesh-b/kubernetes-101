@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pv-c
+spec:
+  storageClassName: test #Must match from Persistent Volume
+  accessModes:
+    - ReadWriteOnce #The access must be below or equal to Persistent Volume
+  resources:
+    requests:
+      storage: 100Mi
