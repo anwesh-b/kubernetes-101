@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: per-vol
+  labels:
+    location: minikube-vm
+spec:
+  storageClassName: test
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: '/home/docker/persistentVolume' #Minikube location
