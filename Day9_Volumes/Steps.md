@@ -1,11 +1,13 @@
-SSH into minikube
-Create a folder to store volume
-Get the directory path to store
+## SSH into minikube
+Since our host is minikube, create a directory in minikube.
+Get the directory path
+`/home/docker/volume`
+
+## Create a pod 
 Create a pod using the path
 
 
- kubectl expose pod volume-pod
---type=NodePort --port=80
+kubectl expose pod volume-pod --type=NodePort --port=80
 
 minikube service volume-pod to open in browser
 
