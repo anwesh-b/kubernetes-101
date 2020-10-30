@@ -14,4 +14,8 @@
 **Day 7** Created Role Based Access Control and Context
 <br>
 **Day 8** Ingress, Path Based and Domain Based routing
+<br>
 **Day 9** Volumes, Consuming same volume from Pods
+<br>
+**Day 10** Persistent Volume and Persistent Volume Claim
+
