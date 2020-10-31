@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mosquitto
+  labels:
+    app: mosquitto
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: mosquitto
+      labels:
+        app: mosquitto
+    spec:
+      containers:
+        - name: mosquito
+          image: eclipse-mosquitto:1.6.2
+          ports:
+            - containerPort: 1883
+  selector:
+    matchLabels:
+      app: mosquitto

@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mosquitto-app
+  labels:
+    app: mosquitto-app
+spec:
+  template:
+    metadata:
+      labels:
+        app: mosquitto-app
+    spec:
+      volumes:
+        - name: mosquitto-conf
+          configMap:
+            name: mosquito-config # From ConfigMap.yml
+        - name: mosquitto-sec
+          secret:
+            secretName: mosquito-secret # From Secret.yml
+      containers:
+        - name: mosquitto
+          image: eclipse-mosquitto:1.6.2
+          ports:
+            - containerPort: 1883
+          volumeMounts:
+            - mountPath: /mosquitto/config
+              name: mosquitto-conf
+            - mountPath: /mosquitto/secret
+              name: mosquitto-sec
+              readOnly: true

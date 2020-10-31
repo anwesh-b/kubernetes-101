@@ -20,3 +20,5 @@
 **Day 10** Persistent Volume and Persistent Volume Claim
 <br>
 **Day 11** Create Cluster across multiple VM and Deployment revision
+<br>
+**Day 12** Create Secrets and ConfigMap
