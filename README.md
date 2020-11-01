@@ -22,3 +22,5 @@
 **Day 11** Create Cluster across multiple VM and Deployment revision
 <br>
 **Day 12** Create Secrets and ConfigMap
+<br>
+**Day 13** Jobs

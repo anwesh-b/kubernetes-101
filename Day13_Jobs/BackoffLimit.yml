@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: jobs_prac
+spec:
+  backoffLimit: 2
+  template:
+    spec:
+      containers:
+      - name: job_practice
+        image: busybox
+        command:
+          - "ls"
+          - "/notexistingfolder"
+      restartPolicy: Never

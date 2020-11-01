@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: jobs_prac
+spec:
+  activeDeadlineSeconds: 20
+  completions: 2
+  template:
+    spec:
+      containers:
+      - name: job_practice
+        image: busybox
+        command:
+          - "sleep"
+          - "60"
+      restartPolicy: Never
