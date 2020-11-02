@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mem-pod
+  namespace: quota
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+      resources:
+        limits:
+          memory: "200Mi"
+#        requests:
+#          memory: "50Mi"

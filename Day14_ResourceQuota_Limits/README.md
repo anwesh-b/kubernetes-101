@@ -23,10 +23,19 @@ We can see the error message,
 , requested: pods=1, used: pods=2, limited: pods=2
 # Create memory limit
 Create Resource Quota with file `Memory_Quota.yml`<br>
-Create Pod with `Memory_Deployment.yml` file. And our deployment is ready.<br>
+Create Deployment with `Memory_Deployment.yml` file. And our deployment is ready.<br>
 `kubectl get all -n quota` to see all the resources running.<br>
 To check the quota, `kubectl describe quota mem-quota -n quota` and we can see the memory used and limit.<br>
 Lets scale our replicas to 6 and apply the changes.<br>
 `kubectl apply -f Memory_Deployment.yml`<br>
 Get the replicaset and see the description like before. And we can see the error.
 >Error creating: pods "quota-deploy-86cd949489-r4qdg" is forbidden: exceeded quota: mem-quota, requested: limits.memory=100Mi, used: limits.memory=500Mi, limited: limits.memory=500Mi
+# Create request limit
+Create Resource Quota with file `Memory_Quota2.yml`<br>
+Create a Pod with file `Memory_Pod.yml`. We have set its memory to `200Mi`.<br>
+`kubectl create -f Memory_Pod.yml` gives an error.
+> Error from server (Forbidden): error when creating "Memory_Pod.yml": pods "mem-pod" is forbidden: exceeded quota: mem-quota, requested: requests.memory=200Mi, used : requests.memory=0, limited: requests.memory=100Mi
+
+This way we can define limit for a single request.<br>
+Lets add `requests.memory: "50Mi"` in `Memory_Pod.yml` file, and this will change request of the pod to 50Mi. And the pod is created. We can see the pod using `kubectl get pods -n quota`.
+
