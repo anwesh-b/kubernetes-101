@@ -38,4 +38,14 @@ Create a Pod with file `Memory_Pod.yml`. We have set its memory to `200Mi`.<br>
 
 This way we can define limit for a single request.<br>
 Lets add `requests.memory: "50Mi"` in `Memory_Pod.yml` file, and this will change request of the pod to 50Mi. And the pod is created. We can see the pod using `kubectl get pods -n quota`.
+# Create a Limit Range
+Create a limit range using `LimitRange.yml` and create a pod using `Pod.yml` file.<br>
+Execute `kubectl describe pod limit-range -n quota` and we can see
+>  Limits:<br>
+&nbsp;&nbsp;&nbsp;memory:&nbsp;&nbsp;&nbsp;200Mi<br>
+Requests:<br>
+&nbsp;&nbsp;&nbsp;memory:&nbsp;&nbsp;&nbsp;50Mi
+
+The `LimitRange.yml` sets the default memory for the pods automatically. This can also be used to configure default CPU constraints, maximum and minimum memory, CPU constraints and Storage consumption. 
+
 

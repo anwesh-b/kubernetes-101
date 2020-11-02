@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: limit-pod
+  namespace: quota
+spec:
+  limits:
+    - default:
+        memory: "200Mi"
+      defaultRequest:
+        memory: "50Mi"
+      type: Container
