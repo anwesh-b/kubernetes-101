@@ -24,3 +24,5 @@
 **Day 12** Create Secrets and ConfigMap
 <br>
 **Day 13** Jobs
+<br>
+**Day 14** Resource Quota and Limit Range
