@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: quota
+  name: quota-deploy
+spec:
+  template:
+    metadata:
+      namespace: quota
+      name: quota-pod
+      labels:
+        app: quota-pod
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          resources:
+            limits:
+              memory: "100Mi"
+#  replicas: 3
+  replicas: 6
+  selector:
+    matchLabels:
+      app: quota-pod
