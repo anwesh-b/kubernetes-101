@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mem-autoscale-deployment
+spec:
+  selector:
+    matchLabels:
+      app: HPA-pods
+  template:
+    metadata:
+      labels:
+        app: HPA-pods
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          resources:
+            requests:
+              memory: 100Mi
+              cpu: 100m
+  replicas: 1
