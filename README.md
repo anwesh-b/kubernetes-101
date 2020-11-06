@@ -26,3 +26,9 @@
 **Day 13** Jobs
 <br>
 **Day 14** Resource Quota and Limit Range
+<br>
+**Day 15** Horizontal Pod Autoscaling
+<br>
+**Day 16** CronJobs
+<br>
+**Day 17** Node Affinity
