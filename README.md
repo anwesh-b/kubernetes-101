@@ -32,3 +32,5 @@
 **Day 16** CronJobs
 <br>
 **Day 17** Node Affinity
+<br>
+**Day 18** Taints and Toleration

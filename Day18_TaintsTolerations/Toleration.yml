@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: no-tolerations
+spec:
+  selector:
+    matchLabels:
+      app: test
+  template:
+    metadata:
+      name: app-no-toleration
+      labels:
+        app: test
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          ports:
+            - containerPort: 80
+      tolerations:
+        - key: "key1"
+          operator: "Equal"
+          value: "value1"
+          effect: "NoSchedule"
+  replicas: 2
